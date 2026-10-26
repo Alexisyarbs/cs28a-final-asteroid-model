@@ -60,5 +60,9 @@ To run this analysis locally on your machine:
    git clone [https://github.com/Alexisyarbs/cs28a-final-asteroid-model.git](https://github.com/Alexisyarbs/cs28a-final-asteroid-model.git)
    ```
 2. Install required python libraries
+
+```bash
    pip install pandas scikit-learn matplotlib seaborn
+```
+
 3. Open final_project.ipnynb in jupyter notebook and run from top to bottom
