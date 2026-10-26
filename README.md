@@ -39,12 +39,16 @@ When plotting Absolute Magnitude against Miss Distance, a sharp, distinct corner
 ### 3. Feature Importance
 
 ![Feature Importance Chart](features.png)
-When asking the model which features it relied on, it completely ignored relative velocity. It realized that `miss_distance` and `est_diameter` (tied directly to absolute magnitude) were the only two variables needed to classify a threat.
+When asking the model which features it relied on to make its decisions, `miss_distance` and `relative_velocity` ranked at the top. Because the algorithm looks for strict numerical cutoffs, the model heavily prioritized `miss_distance` to split the safe asteroids from the dangerous ones.
 
-### 4. Correlation Heat Map (Bonus)
+### 4. Correlation Heat Map
 
 ![Correlation Heat Map](heatmap.png)
-The correlation matrix proves mathematically what the feature importance chart suggests: hazard status is strongly correlated with size and distance, but has almost zero correlation with how fast the asteroid is moving.
+The heat map measures linear relationships rather than hard cutoffs.
+
+- `absolute_magnitude` has the strongest connection (-0.37). It is negative because in astronomy, a _lower_ magnitude means a _larger_ asteroid.
+- `relative_velocity` has a positive correlation (0.19).
+- Interestingly, `miss_distance` has almost zero linear correlation (0.04). This makes sense because an asteroid being 20 million miles away versus 40 million miles away doesn't gradually make it more dangerous. Danger only triggers when it crosses a very specific threshold, which is exactly why the model caught it, but the linear heat map didn't!
 
 ## Limitations
 
